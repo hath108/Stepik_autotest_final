@@ -25,6 +25,7 @@ class LoginPage(BasePage):
             *LoginPageLocators.REGISTER_FORM), "форма регистрации отсутствует"
 
 
+'''
 def test_guest_can_go_to_login_page(browser):
     link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
     page = LoginPage(browser, link)
@@ -32,3 +33,4 @@ def test_guest_can_go_to_login_page(browser):
     page.should_be_login_url()  # class LoginPage(BasePage)
     page.should_be_login_form()  # class LoginPage(BasePage)
     page.should_be_register_form()  # class LoginPage(BasePage)
+'''
