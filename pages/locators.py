@@ -8,6 +8,7 @@ class BasePageLocators():
 
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    BASKET_LINK = (By.CSS_SELECTOR, "span > a")
 
 
 class LoginPageLocators():
