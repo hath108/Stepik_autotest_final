@@ -1,0 +1,9 @@
+[
+  "test_main_page.py::test_guest_can_go_to_login_page",
+  "test_negative_checks.py::test_guest_cant_see_success_message_after_adding_product_to_basket",
+  "test_negative_checks.py::test_guest_cant_see_success_message",
+  "test_negative_checks.py::test_message_disappeared_after_adding_product_to_basket",
+  "test_product_page.py::test_guest_can_add_product_to_basket",
+  "test_product_page.py::test_guest_should_see_login_link_on_product_page",
+  "test_product_page.py::test_guest_can_go_to_login_page_from_product_page"
+]
