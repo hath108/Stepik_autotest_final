@@ -1,8 +1,3 @@
-
-# Для начала сделаем базовую страницу, от которой будут унаследованы все
-# остальные классы. В ней мы опишем вспомогательные методы для работы с драйвером.
-# создайте класс с названием BasePage.
-from selenium.common.exceptions import NoSuchElementException
 import time
 import math
 from .locators import BasePageLocators
@@ -10,6 +5,7 @@ from selenium.common.exceptions import NoAlertPresentException  # в начал�
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
 
 
 class BasePage():
@@ -17,6 +13,10 @@ class BasePage():
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(
+            *BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorised user"
 
     def is_element_present(self, how, what):
         try:

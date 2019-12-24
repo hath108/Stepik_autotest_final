@@ -15,4 +15,6 @@ class BasketPage(BasePage):
     def check_if_text_empty_basket_present(self):
         empty_basket = self.browser.find_element(
             By.CSS_SELECTOR, "#content_inner > p").text
-        assert "корзина пуста" in empty_basket, "В корзине есть товар"
+
+        assert "basket is empty" or "Ваша корзина пуста" in empty_basket, (
+            "Текст должен содержать 'basket is empty' ", empty_basket)

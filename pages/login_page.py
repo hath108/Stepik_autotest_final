@@ -1,15 +1,23 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from .locators import BasePageLocators
 from selenium.webdriver.common.by import By
+import time
 
 
 class LoginPage(BasePage):
-    '''
-    def should_be_login_page(self):
-        self.should_be_login_url()
-        self.should_be_login_form()
-        self.should_be_register_form()
-    '''
+
+    def register_new_user(self):
+        email = str(time.time()) + "@fakemail.org"
+        password = str(time.time())
+        self.browser.find_element(
+            By.CSS_SELECTOR, "#id_registration-email").send_keys(email)
+        self.browser.find_element(
+            By.CSS_SELECTOR, "#id_registration-password1").send_keys(password)
+        self.browser.find_element(
+            By.CSS_SELECTOR, "#id_registration-password2").send_keys(password)
+        self.browser.find_element(
+            By.CSS_SELECTOR, "#register_form > button").click()
 
     def should_be_login_url(self):
         cur_url = self.browser.current_url
@@ -23,14 +31,3 @@ class LoginPage(BasePage):
     def should_be_register_form(self):
         assert self.is_element_present(
             *LoginPageLocators.REGISTER_FORM), "форма регистрации отсутствует"
-
-
-'''
-def test_guest_can_go_to_login_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
-    page = LoginPage(browser, link)
-    page.open()  # class BasePage()
-    page.should_be_login_url()  # class LoginPage(BasePage)
-    page.should_be_login_form()  # class LoginPage(BasePage)
-    page.should_be_register_form()  # class LoginPage(BasePage)
-'''

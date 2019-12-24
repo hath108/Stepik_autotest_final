@@ -1,11 +1,5 @@
 from .base_page import BasePage
-from selenium.webdriver.common.by import By
 from .locators import ProductPageLocators
-import time
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import pytest
 
 
 class ProductPage(BasePage):
@@ -30,12 +24,8 @@ class ProductPage(BasePage):
             *ProductPageLocators.BTN_ADD_TO_BASKET).click()
 
     def if_product_added_to_basket(self):
-        name_of_product_in_basket = self.browser.find_element(
-            *ProductPageLocators.SUCCESS_MESSAGE).text
-        time.sleep(10)
-        print(
-            f"Сообщение об успешном добавлении товара в корзину: {name_of_product_in_basket}")
-        assert f"{product_name} был добавлен в вашу корзину" in name_of_product_in_basket, f"Товар не был добавлен в корзину {cur_url}"
+        assert self.is_element_present(
+            *ProductPageLocators.SUCCESS_MESSAGE), "Товар не был добавлен в корзину"
 
     def if_price_of_product_equal_sum_in_basket(self):
         sum_in_basket = self.browser.find_element(
