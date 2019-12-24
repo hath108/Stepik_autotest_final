@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
 from .locators import BasePageLocators
+from .locators import RegistrationLocators
 from selenium.webdriver.common.by import By
 import time
 
@@ -11,13 +12,13 @@ class LoginPage(BasePage):
         email = str(time.time()) + "@fakemail.org"
         password = str(time.time())
         self.browser.find_element(
-            By.CSS_SELECTOR, "#id_registration-email").send_keys(email)
+            *RegistrationLocators.REGISTRATION_EMAIL).send_keys(email)
         self.browser.find_element(
-            By.CSS_SELECTOR, "#id_registration-password1").send_keys(password)
+            *RegistrationLocators.REGISTRATION_PASSWORD1).send_keys(password)
         self.browser.find_element(
-            By.CSS_SELECTOR, "#id_registration-password2").send_keys(password)
+            *RegistrationLocators.REGISTRATION_PASSWORD2).send_keys(password)
         self.browser.find_element(
-            By.CSS_SELECTOR, "#register_form > button").click()
+            *RegistrationLocators.REGISTRATION_BUTTON).click()
 
     def should_be_login_url(self):
         cur_url = self.browser.current_url
