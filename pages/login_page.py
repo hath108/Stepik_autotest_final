@@ -8,9 +8,7 @@ import time
 
 class LoginPage(BasePage):
 
-    def register_new_user(self):
-        email = str(time.time()) + "@fakemail.org"
-        password = str(time.time())
+    def register_new_user(self, email, password):
         self.browser.find_element(
             *RegistrationLocators.REGISTRATION_EMAIL).send_keys(email)
         self.browser.find_element(
